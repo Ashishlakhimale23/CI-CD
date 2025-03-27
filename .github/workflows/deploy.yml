@@ -7,17 +7,18 @@ jobs:
     steps:
       - name: checkout the code
         uses: actions/checkout@v2
-      - name: executing remote ssh commands using key
+      - name: executing remote ssh commands
         uses: appleboy/ssh-action@master
         with:
           host: 15.207.111.230
           username: ubuntu
-          key: ${{ secrets.PRIVATE_SECRET_KEY }}  # Private key here
+          password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           debug: true
-          script: 
-            cd githubactions
+          script: |
+            cd /home/ubuntu/githubactions || { echo "Directory not found"; exit 1; }
             git pull origin main
             npm install
-            npm run build 
-            npm run dev
+            npm run build
+            # Optionally skip dev or run in background
+            npm run dev &
