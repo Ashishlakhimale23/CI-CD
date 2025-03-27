@@ -8,7 +8,7 @@ jobs:
       - name: checkout the code
         uses : actions/checkout@v2
       - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: 13.201.128.14
           username: ubuntu 
