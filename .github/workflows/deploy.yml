@@ -16,9 +16,10 @@ jobs:
           port: 22
           debug: true
           script: |
-             git clone https://github.com/Ashishlakhimale23/CI-CD.git
+            
              cd CI-CD
              git pull origin main
+            
              npm install
              npm run build
              npm run dev
