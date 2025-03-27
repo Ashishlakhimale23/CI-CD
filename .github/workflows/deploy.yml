@@ -15,9 +15,5 @@ jobs:
           key: ${{ secrets.PRIVATE_SECRET_KEY }}  # Private key here
           port: 22
           debug: true
-          script: | 
-            cd githubactions
-            git pull origin main
-            npm install
-            npm run build 
-            npm run dev
+          script: ./deploy.sh 
+            
