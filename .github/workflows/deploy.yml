@@ -16,7 +16,6 @@ jobs:
           port: 22
           debug: true
           script: |
-            
              cd CI-CD
              git pull 
              npm install
