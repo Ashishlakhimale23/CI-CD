@@ -6,13 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout the code
-        uses: actions/checkout@v2
-      - name: executing remote ssh commands using key
-        uses: appleboy/ssh-action@master
+        uses : actions/checkout@v2
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: 15.207.111.230
-          username: ubuntu
-          key: ${{ secrets.PRIVATE_SECRET_KEY }}  # Private key here
-          port: 22
-          debug: true
+          username: ubuntu 
+          password: ${{secrets.PRIVATE_SECRET_KEY}}
+          port: 22 
           script: whoami
