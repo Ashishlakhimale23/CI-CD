@@ -5,21 +5,18 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: checkout the code
-        uses: actions/checkout@v2
       - name: executing remote ssh commands using key
         uses: appleboy/ssh-action@master
         with:
-          host: 13.201.167.40
+          host: 54.215.60.133
           username: ubuntu
           key: ${{ secrets.PRIVATE_SECRET_KEY }}  # Private key here
           port: 22
           debug: true
           script: |
-             git clone https://github.com/Ashishlakhimale23/CI-CD.git
              cd CI-CD
              git pull 
              npm install
              npm run build
-             npm run dev
+             pm2 start web | pm2 restart web
             
