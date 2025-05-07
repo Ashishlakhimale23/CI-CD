@@ -1,27 +1,26 @@
-name: remote ssh command
-on: [push]
-jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: executing remote ssh commands using key
-        uses: appleboy/ssh-action@master
-        with:
-          host: 54.193.103.146
-          username: ubuntu
-          key: ${{ secrets.PRIVATE_SECRET_KEY }}  # Private key here
-          port: 22
-          debug: true
-          script: |
-              if [ -d CI-CD ];then
-                cd CI-CD 
-              else   
-                git clone https://github.com/Ashishlakhimale23/CI-CD.git
-                cd CI-CD
-              fi
-              git pull origin main  
-              npm install
-              npm run build
-              pm2 restart web || pm2 start npm --name "web" -- run dev 
-            
+name  : deploying to vm on push 
+on : [push]
+jobs : 
+  build : 
+    name : build 
+    runs-on : ubuntu-latest
+    steps  :
+      - name : remote ssh to vm 
+        uses : appleboy/ssh-action@master
+        with : 
+          host : 13.52.243.227  
+          username : ubuntu
+          secrets : ${{secrets.PRIVATE_SECRET_KEY}}
+          port : 22 
+          debug : true 
+          script : 
+            if [ -d CI-CD ];then
+              cd CI-CD 
+            else 
+              git clone https://github.com/Ashishlakhimale23/CI-CD.git
+              cd CI-CD 
+            fi 
+            git pull origin main 
+            npm install 
+            npm run build 
+            pm2 restart web || pm2 start npm --name "web" -- run dev
