@@ -8,7 +8,7 @@ jobs :
       - name : remote ssh to vm 
         uses : appleboy/ssh-action@master
         with : 
-          host : 13.52.243.227  
+          host : 
           username : ubuntu
           key : ${{secrets.PRIVATE_SECRET_KEY}}
           port : 22 
