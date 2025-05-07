@@ -13,7 +13,7 @@ jobs :
           key : ${{secrets.PRIVATE_SECRET_KEY}}
           port : 22 
           debug : true 
-          script : 
+          script : |
             if [ -d CI-CD ];then
               cd CI-CD 
 
