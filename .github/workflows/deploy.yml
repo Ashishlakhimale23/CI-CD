@@ -10,7 +10,7 @@ jobs :
         with : 
           host : 13.52.243.227  
           username : ubuntu
-          keys : ${{secrets.PRIVATE_SECRET_KEY}}
+          key : ${{secrets.PRIVATE_SECRET_KEY}}
           port : 22 
           debug : true 
           script : 
